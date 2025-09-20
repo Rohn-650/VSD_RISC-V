@@ -1,5 +1,6 @@
 
 # RISC-V SoC Tapeout Program
+<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/a3a15cc1-fb81-49a9-a96d-e091dfe37413" />
 
 **Participant:** Rohn  
 **Platform:** Synopsys EDA & SCL 180nm PDK  
