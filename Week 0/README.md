@@ -149,7 +149,8 @@ docker --version
 python3 --version
 # Check OpenLANE test results
 ```
-<!-- INSERT SCREENSHOT OF DOCKER VERSION CHECK HERE -->
+<img width="592" height="55" alt="docker" src="https://github.com/user-attachments/assets/cf4752c6-1d0f-4c0f-831e-9af3d49391f0" />
+
 *Figure 6: Successful installation of Docker.*
 
 <!-- INSERT SCREENSHOT OF OPENLANE TEST PASS HERE -->
