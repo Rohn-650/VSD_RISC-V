@@ -93,7 +93,8 @@ sudo apt-get install ngspice
 ```bash
 ngspice --version
 ```
-<!-- INSERT SCREENSHOT OF NGSPICE VERSION CHECK HERE -->
+<img width="619" height="223" alt="image" src="https://github.com/user-attachments/assets/92a3ffde-999c-4576-9aaa-89f4f1764917" />
+
 *Figure 4: Successful installation and version check of Ngspice.*
 
 ---
