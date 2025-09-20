@@ -113,7 +113,8 @@ sudo make install
 ```bash
 magic --version
 ```
-<!-- INSERT SCREENSHOT OF MAGIC VERSION CHECK HERE -->
+<img width="592" height="55" alt="image" src="https://github.com/user-attachments/assets/106759fc-b99e-4b46-92e8-d44b3c4fa118" />
+
 *Figure 5: Successful installation and version check of Magic.*
 
 ---
@@ -153,8 +154,6 @@ python3 --version
 
 *Figure 6: Successful installation of Docker.*
 
-<!-- INSERT SCREENSHOT OF OPENLANE TEST PASS HERE -->
-*Figure 7: Successful OpenLANE test run.*
 
 ---
 
