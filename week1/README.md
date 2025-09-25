@@ -1,4 +1,4 @@
-# RTL Workshop - 5-Day Combined Summary
+# WEEK1 - 5-Day Combined Summary
 
 ## 🛠️ Essential Setup & Execution Steps
 
