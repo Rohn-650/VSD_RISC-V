@@ -117,11 +117,13 @@ show
 # **Screenshots**
 
 <img width="999" height="702" alt="Screenshot from 2025-09-26 22-24-51" src="https://github.com/user-attachments/assets/0ff46e7c-12e4-425f-bbb3-aff00fd79045" />
+
 **.lib file content view👆**
 
 
 <img width="999" height="702" alt="Screenshot from 2025-09-26 22-25-37" src="https://github.com/user-attachments/assets/64b25255-d679-4db2-92ca-a4815e64a00f" />
-# **VS**
+
+## **VS**
 <img width="999" height="702" alt="flatted" src="https://github.com/user-attachments/assets/6611b757-7655-4576-99a6-fe6868c4d814" />
 
 **Hierarchical vs Flattened synthesis comparison👆**
