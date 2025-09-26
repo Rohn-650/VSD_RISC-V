@@ -66,9 +66,15 @@ show
    show
    ```
 
-**[INSERT DAY 1 SCREENSHOT: good_mux.v simulation waveform]**
 
-**[INSERT DAY 1 SCREENSHOT: Yosys synthesis schematic]**
+<img width="999" height="702" alt="good_mux_gtkwave" src="https://github.com/user-attachments/assets/57962214-f05d-4d95-9ff3-95f73a0abddd" />
+
+**good_mux.v simulation waveform**
+
+<img width="999" height="702" alt="good_mux_yosys" src="https://github.com/user-attachments/assets/7cfef8c6-9880-4beb-94fd-c486d1567f82" />
+
+
+**Yosys synthesis schematic**
 
 ---
 
@@ -108,11 +114,21 @@ show
    show
    ```
 
-**[INSERT DAY 2 SCREENSHOT: .lib file content view]**
+**.lib file content view**
 
-**[INSERT DAY 2 SCREENSHOT: Hierarchical vs Flattened synthesis comparison]**
+<img width="999" height="702" alt="Screenshot from 2025-09-26 22-24-51" src="https://github.com/user-attachments/assets/0ff46e7c-12e4-425f-bbb3-aff00fd79045" />
 
-**[INSERT DAY 2 SCREENSHOT: D flip-flop synthesis result]**
+
+**Hierarchical vs Flattened synthesis comparison**
+
+<img width="999" height="702" alt="Screenshot from 2025-09-26 22-25-37" src="https://github.com/user-attachments/assets/64b25255-d679-4db2-92ca-a4815e64a00f" />
+*VS*
+<img width="999" height="702" alt="flatted" src="https://github.com/user-attachments/assets/6611b757-7655-4576-99a6-fe6868c4d814" />
+
+
+**[D flip-flop synthesis result]**
+
+<img width="999" height="300" alt="Screenshot from 2025-09-26 22-43-50" src="https://github.com/user-attachments/assets/89961f8a-24e6-45f9-929c-4cd6a6329c13" />
 
 ---
 
