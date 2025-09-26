@@ -132,7 +132,7 @@ show
 
 <img width="999" height="300" alt="Screenshot from 2025-09-26 22-43-50" src="https://github.com/user-attachments/assets/89961f8a-24e6-45f9-929c-4cd6a6329c13" />
 
-**[D flip-flop synthesis result]👆**
+**D flip-flop synthesis result👆**
 ---
 
 ## 📅 Day 3: Combinational & Sequential Optimization
