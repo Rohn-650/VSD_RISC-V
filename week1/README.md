@@ -134,38 +134,97 @@ show
 
 ---
 
+# 📅 Day 3: Combinational & Sequential Optimization
 
-## 📅 Day 3: Combinational & Sequential Optimization
+## Key Concepts
+- **Constant Propagation** - Replacing variables with constant values
+- **Logic Simplification** - Reducing complex expressions  
+- **Sequential Optimization** - Optimizing flip-flops and registers
+- **Dead Code Elimination** - Removing unused logic
 
-### **Key Concepts**
-- Constant propagation optimization
-- State optimization techniques
-- Cloning and retiming methods
+## Essential Execution Steps
 
-### **Essential Execution Steps**
-1. **Optimization Commands in Yosys:**
-   ```bash
-   read_verilog opt_check.v
-   synth -top opt_check
-   opt_clean -purge  # Critical optimization step
-   abc -liberty path/to/sky130.lib
-   show
-   ```
+### Constant Propagation Lab:
+```bash
+read_verilog opt_check.v
+synth -top opt_check
+opt_clean -purge
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+stat
+```
 
-2. **Sequential Circuit Optimization:**
-   ```bash
-   read_verilog dff_const1.v
-   synth -top dff_const1
-   opt -full
-   abc -liberty path/to/sky130.lib
-   show
-   ```
+### Complex Expression Optimization:
+```bash
+read_verilog opt_check4.v  
+synth -top opt_check4
+opt_clean -purge
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+stat
+```
 
-**[INSERT DAY 3 SCREENSHOT: opt_check.v before and after optimization]**
+### Sequential Constant Optimization:
+```bash
+read_verilog dff_const1.v
+synth -top dff_const1
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+stat
+```
 
-**[INSERT DAY 3 SCREENSHOT: Constant propagation example]**
+## Lab Code Examples
 
-**[INSERT DAY 3 SCREENSHOT: D flip-flop constant optimization]**
+### Lab 1: Basic Constant Propagation
+```verilog
+module opt_check (input a, input b, output y);
+    assign y = a ? b : 0;  // Optimizes to y = a & b
+endmodule
+```
+
+### Lab 4: Complex Expression Simplification  
+```verilog
+module opt_check4 (input a, input b, input c, output y);
+    assign y = a ? (b ? (a & c) : c) : (!c);  // Optimizes to y = a ? c : !c
+endmodule
+```
+
+### Lab 5: Sequential Constant Optimization
+```verilog
+module dff_const1(input clk, input reset, output reg q);
+    always @(posedge clk, posedge reset)
+        if(reset) q <= 1'b0; else q <= 1'b1;  // DFF with constant input
+endmodule
+```
+
+## Screenshots
+
+
+
+**opt_check.v before and after optimization**👆
+
+**Constant propagation example**👆
+
+
+
+**D flip-flop constant optimization**👆
+
+## Quick Run All Labs
+```bash
+# Single command for all optimizations
+for design in opt_check opt_check4 dff_const1; do
+    yosys -p "read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib; 
+              read_verilog $design.v; 
+              synth -top $design; 
+              opt_clean -purge; 
+              stat;"
+done
+```
+
+## Optimization Results Summary
+- **Lab 1**: `y = a ? b : 0` → Simplified AND logic
+- **Lab 4**: Complex ternary → Simplified `y = a ? c : !c`  
+- **Lab 5**: DFF with constant input → Optimized sequential cell
+
+
 
 ---
 
