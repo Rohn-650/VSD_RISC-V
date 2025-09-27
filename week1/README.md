@@ -198,11 +198,19 @@ endmodule
 ## Screenshots
 
 
+<img width="417" height="171" alt="opt_check_before_rohn" src="https://github.com/user-attachments/assets/c4b4e49f-1b1e-4b30-8288-948f36c2b312" />
+
+<img width="694" height="171" alt="opt_check_after_rohn" src="https://github.com/user-attachments/assets/75197e0c-f4b3-4924-8334-11446706705d" />
+
 
 **opt_check.v before and after optimization**👆
 
+<img width="702" height="243" alt="opt_check4_optimized_rohn" src="https://github.com/user-attachments/assets/0bcdcc0b-e437-4019-8623-1dd1c309134f" />
+
 **Constant propagation example**👆
 
+
+<img width="1259" height="223" alt="dff_const_optimized_rohn" src="https://github.com/user-attachments/assets/04c285bb-eba5-49d4-bec6-da94a72c8803" />
 
 
 **D flip-flop constant optimization**👆
