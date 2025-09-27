@@ -196,9 +196,10 @@ endmodule
 ```
 
 ## Screenshots
-
+before:
 
 <img width="417" height="171" alt="opt_check_before_rohn" src="https://github.com/user-attachments/assets/c4b4e49f-1b1e-4b30-8288-948f36c2b312" />
+after:
 
 <img width="694" height="171" alt="opt_check_after_rohn" src="https://github.com/user-attachments/assets/75197e0c-f4b3-4924-8334-11446706705d" />
 
@@ -236,88 +237,245 @@ done
 
 ---
 
-## 📅 Day 4: Gate-Level Simulation & Coding Practices
+# 📅 Day 4: Gate-Level Simulation & Coding Practices
 
-### **Key Concepts**
-- Gate-Level Simulation (GLS) flow
-- Blocking vs Non-blocking assignments
-- Synthesis-Simulation mismatch prevention
+## **Key Concepts**
+- **Gate-Level Simulation (GLS)** flow
+- **Blocking vs Non-blocking** assignments  
+- **Synthesis-Simulation mismatch** prevention
 
-### **Essential Execution Steps**
-1. **GLS Execution:**
-   ```bash
-   iverilog primitives.v sky130_fd_sc_hd.v synthesized_netlist.v tb_design.v
-   ./a.out
-   gtkwave tb_design.vcd
-   ```
+## **Essential Execution Steps**
 
-2. **Test Different Coding Styles:**
-   ```bash
-   # Test blocking assignment version
-   iverilog blocking_example.v tb_blocking.v
-   
-   # Test non-blocking assignment version  
-   iverilog non_blocking_example.v tb_non_blocking.v
-   ```
+### 1. **GLS Execution:**
+```bash
+# Synthesize to netlist
+yosys -p "read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib; read_verilog good_mux.v; synth -top good_mux; abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib; write_verilog good_mux_netlist.v;"
 
-3. **Bad Code Example Analysis:**
-   ```bash
-   iverilog bad_mux.v tb_bad_mux.v  # Expect warnings/mismatches
-   ```
+# Gate-Level Simulation
+iverilog ../lib/primitives.v ../lib/sky130_fd_sc_hd.v good_mux_netlist.v tb_good_mux.v
+./a.out
+gtkwave tb_good_mux.vcd
+```
 
-**[INSERT DAY 4 SCREENSHOT: GLS waveform vs RTL simulation]**
+### 2. **Blocking vs Non-blocking Analysis:**
+```bash
+# Blocking assignment (Combinational)
+iverilog blocking_example.v tb_blocking.v
+./a.out
+gtkwave tb_blocking.vcd
 
-**[INSERT DAY 4 SCREENSHOT: Blocking vs Non-blocking simulation results]**
+# Non-blocking assignment (Sequential)  
+iverilog non_blocking_example.v tb_non_blocking.v
+./a.out
+gtkwave tb_non_blocking.vcd
+```
 
-**[INSERT DAY 4 SCREENSHOT: Bad mux example warnings]**
+### 3. **Good vs Bad Code Comparison:**
+```bash
+# Good Mux (Correct)
+iverilog good_mux.v tb_good_mux.v
+./a.out
 
----
+# Bad Mux (Incomplete sensitivity list)
+iverilog bad_mux.v tb_good_mux.v  # Expect warnings
+./a.out
+```
 
-## 📅 Day 5: Advanced Optimization & Scalable Coding
+## **Screenshots**
 
-### **Key Concepts**
-- Latch inference prevention
-- For loops and generate blocks
-- Scalable hardware design
+<img width="710" height="233" alt="good_mux_synth_rohn" src="https://github.com/user-attachments/assets/4aa44849-f6d9-4f57-b4f4-5b5d39fb872e" />
 
-### **Essential Execution Steps**
-1. **Latch Detection Test:**
-   ```bash
-   iverilog incomplete_if.v tb_incomplete_if.v  # Should show latch warnings
-   ```
+**Good Mux Synthesis - rohn** 👆  
+*Properly synthesized multiplexer with complete sensitivity list*
 
-2. **Generate Block Synthesis:**
-   ```bash
-   read_verilog rca_generate.v
-   synth -top rca
-   show
-   ```
+<img width="1005" height="677" alt="Screenshot from 2025-09-27 17-19-51" src="https://github.com/user-attachments/assets/a38c9d13-ae27-4bfd-bb8e-c1c96b9acb1c" />
+<img width="994" height="679" alt="Screenshot from 2025-09-27 17-14-50" src="https://github.com/user-attachments/assets/179b42c6-9ce2-4163-a279-d1e1bfa3843e" />
+<img width="704" height="233" alt="blocking_synth_rohn" src="https://github.com/user-attachments/assets/c73e900a-8b61-46fd-849a-eb4a0aa5182b" />
 
-3. **Loop-based Design Synthesis:**
-   ```bash
-   read_verilog mux_generate.v
-   synth -top mux_generate
-   abc -liberty path/to/sky130.lib
-   show
-   ```
 
-4. **Complete vs Incomplete Case Analysis:**
-   ```bash
-   # Complete case (no latches)
-   iverilog comp_case.v tb_comp_case.v
-   
-   # Incomplete case (latches inferred)  
-   iverilog bad_case.v tb_bad_case.v
-   ```
+**Blocking vs Non-blocking Simulation - rohn** 👆  
+*Comparison of assignment styles in simulation*
 
-**[INSERT DAY 5 SCREENSHOT: Latch inference in incomplete if statement]**
+<img width="973" height="286" alt="Screenshot from 2025-09-27 17-23-01" src="https://github.com/user-attachments/assets/6ede6881-e537-4a7b-bb1b-e342ae4dd3a9" />
 
-**[INSERT DAY 5 SCREENSHOT: 8-bit RCA with generate blocks]**
+analysis:
 
-**[INSERT DAY 5 SCREENSHOT: For-loop based MUX implementation]**
 
----
+<img width="421" height="233" alt="bad_mux_analysis_rohn" src="https://github.com/user-attachments/assets/98eadf94-4910-43eb-b13a-044da315bf2d" />
 
+synthesis:
+
+<img width="710" height="233" alt="bad_mux_synth_rohn" src="https://github.com/user-attachments/assets/7deb46aa-94a0-4785-9697-2cb378aaf9be" />
+<img width="710" height="233" alt="good_mux_synth_rohn" src="https://github.com/user-attachments/assets/b0b36f45-0d6c-4e8f-a70a-bfa36d9b03be" />
+
+
+**Good vs Bad Mux Analysis - rohn** 👆  
+*Synthesis results showing proper vs problematic coding*
+
+## **Code Examples**
+
+### ✅ Good Mux (Correct):
+```verilog
+module good_mux (input i0, input i1, input sel, output reg y);
+    always @(*) begin  // Complete sensitivity list
+        if(sel) y = i1;
+        else y = i0;
+    end
+endmodule
+```
+
+### ❌ Bad Mux (Problematic):
+```verilog
+module bad_mux (input i0, input i1, input sel, output reg y);
+    always @(sel) begin  // Incomplete sensitivity list
+        if(sel) y = i1;
+        else y = i0;
+    end
+endmodule
+```
+
+## **Quick Verification Commands**
+```bash
+# Generate all schematics with PNG outputs
+yosys -p "read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib; read_verilog good_mux.v; synth -top good_mux; show -format dot -prefix good_mux_rohn;"
+dot -Tpng good_mux_rohn.dot -o good_mux_rohn.png
+
+# Test simulation matching
+iverilog good_mux.v tb_good_mux.v && ./a.out
+echo "GLS verification completed successfully!"
+```
+
+## **Expected Results**
+- ✅ **Good Mux**: Clean synthesis, proper simulation behavior
+- ⚠️ **Bad Mux**: Tool warnings, potential simulation mismatch  
+- 🔄 **Blocking**: Immediate assignment (combinational logic)
+- ⏰ **Non-blocking**: Scheduled assignment (sequential logic)
+
+# 📅 Day 5: Advanced Optimization & Scalable Coding
+
+## **Key Concepts**
+- **Latch inference prevention**
+- **For loops and generate blocks**  
+- **Scalable hardware design**
+
+## **Essential Execution Steps**
+
+### **Latch Detection Test:**
+```bash
+iverilog incomplete_if.v tb_incomplete_if.v  # Shows latch warnings
+gtkwave tb_incomplete_if.vcd
+```
+
+### **Generate Block Synthesis:**
+```bash
+yosys -p "read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib; 
+          read_verilog rca_generate.v; 
+          synth -top rca; 
+          show -format dot -prefix rca_generate_rohn;"
+dot -Tpng rca_generate_rohn.dot -o rca_generate_rohn.png
+```
+
+### **Loop-based Design Synthesis:**
+```bash
+yosys -p "read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib; 
+          read_verilog mux_generate.v; 
+          synth -top mux_generate; 
+          abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib; 
+          show -format dot -prefix mux_loop_rohn;"
+dot -Tpng mux_loop_rohn.dot -o mux_loop_rohn.png
+```
+
+### **Complete vs Incomplete Case Analysis:**
+```bash
+# Complete case (no latches)
+iverilog comp_case.v tb_comp_case.v
+./a.out
+
+# Incomplete case (latches inferred)  
+iverilog incomplete_if.v tb_incomplete_if.v
+./a.out
+```
+
+## **Screenshots**
+<img width="998" height="685" alt="Screenshot from 2025-09-27 18-07-17" src="https://github.com/user-attachments/assets/03513f39-adf0-4939-8d41-40ebb9335d43" />
+
+<img width="480" height="233" alt="latch_inference_rohn" src="https://github.com/user-attachments/assets/19b6147a-709b-4f54-b752-fa83fd3ac3a1" />
+
+
+**Latch Inference in Incomplete If Statement - rohn** 👆  
+*Shows latch cell generated due to missing else clause*
+<img width="1007" height="685" alt="Screenshot from 2025-09-27 18-10-52" src="https://github.com/user-attachments/assets/b4e43252-90aa-4643-89ea-10fae4b9c47f" />
+
+<img width="1009" height="236" alt="rca_generate_rohn" src="https://github.com/user-attachments/assets/3cd1152d-29c2-4e11-8ba3-9ac78247687c" />
+
+
+**8-bit RCA with Generate Blocks - rohn** 👆  
+*Scalable adder implementation using generate for loops*
+<img width="1007" height="685" alt="Screenshot from 2025-09-27 18-09-40" src="https://github.com/user-attachments/assets/686c9949-5945-4dd5-b4f6-cb86548b60c1" />
+
+<img width="1086" height="584" alt="mux_loop_rohn" src="https://github.com/user-attachments/assets/685feb12-55c2-4f8b-a673-be54dac97325" />
+
+
+**For-loop Based MUX Implementation - rohn** 👆  
+*Parameterized multiplexer using procedural for loop*
+
+## **Code Examples**
+
+### ✅ **Complete Case (No Latch):**
+```verilog
+module comp_case(input i0, i1, i2, input [1:0] sel, output reg y);
+    always @(*) begin
+        case(sel)
+            2'b00: y = i0;
+            2'b01: y = i1;
+            default: y = i2;  // Prevents latch
+        endcase
+    end
+endmodule
+```
+
+### ❌ **Incomplete If (Latch Inferred):**
+```verilog
+module incomplete_if(input i0, i1, i2, output reg y);
+    always @(*) begin
+        if (i0) y = i1;  // Missing else → LATCH!
+    end
+endmodule
+```
+
+### 🔄 **Scalable RCA with Generate:**
+```verilog
+module rca(input [7:0] num1, num2, output [8:0] sum);
+    wire [7:0] int_co, int_sum;
+    genvar i;
+    generate for (i=0; i<8; i=i+1) begin
+        if (i==0) fa u_fa(num1[0], num2[0], 1'b0, int_co[0], int_sum[0]);
+        else fa u_fa(num1[i], num2[i], int_co[i-1], int_co[i], int_sum[i]);
+    end endgenerate
+    assign sum = {int_co[7], int_sum};
+endmodule
+```
+
+## **Quick Verification Commands**
+```bash
+# Generate all schematics
+yosys -p "read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib; 
+          read_verilog incomplete_if.v; 
+          synth -top incomplete_if; 
+          show -format dot -prefix day5_rohn;"
+
+# Test latch behavior
+iverilog incomplete_if.v tb_incomplete_if.v && ./a.out
+echo "Latch detection test completed!"
+```
+
+## **Expected Results**
+- ⚠️ **Incomplete If**: Latch cell in synthesis, simulation shows memory behavior
+- ✅ **Complete Case**: Pure combinational logic, no latches  
+- 🔄 **Generate Blocks**: Scalable hardware, easy to modify parameters
+- 🎯 **For-loop MUX**: Efficient parameterized design
+
+**Day 5 Complete:** Mastered latch prevention and scalable coding techniques! ✅
 ## 📊 Complete Workflow Summary
 
 ### **Daily Execution Pattern:**
