@@ -52,16 +52,24 @@ This part involves functional simulation and verification of the BabySoC design 
 ### Simulation Results
 
 #### Screenshot 1: Reset Operation
-*[Add screenshot of reset waveform here]*
+<img width="1030" height="674" alt="reset waveform " src="https://github.com/user-attachments/assets/2f46be38-2d4c-4f36-879f-8840d909090a" />
+
 **Description**: Shows the reset signal transitioning from high to low, initializing the BabySoC components to their known states.
 
 #### Screenshot 2: Clock Generation
-*[Add screenshot of clock signals here]*
+<img width="1014" height="674" alt="clock signals " src="https://github.com/user-attachments/assets/b9dc9d94-0403-4822-ab14-77917b12da12" />
+
 **Description**: Demonstrates the PLL generating stable clock signals and the reference clock oscillation that synchronizes system operations.
 
 #### Screenshot 3: Data Flow
-*[Add screenshot of data flow here]*
+<img width="1014" height="674" alt="data flow" src="https://github.com/user-attachments/assets/cc56c522-a7d6-4f83-9c86-732c15ec7f64" />
+
 **Description**: Illustrates the digital data output from RISC-V core being converted to analog output by the DAC, showing the complete data path.
+#### Screenshot 4: dump waveform
+<img width="1214" height="770" alt="dump_vcd" src="https://github.com/user-attachments/assets/5ecfb7c4-5238-4be3-9d33-9f7fa9eab160" />
+
+
+**Description**: completed dump.vcd waveform
 
 ### Files Generated
 - `pre_synth_sim.out`: Compiled simulation executable
