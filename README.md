@@ -9,7 +9,7 @@ This repository documents my progress through the 20-week **RISC-V Reference SoC
 
 ## Structure
 - `Week_0/` - Environment Setup
-- `Week_1/` - Functional Validation
+- `Week_1/` - RTL Design & Synthesis Fundamentals: From Verilog to GLS
 - `Week_2/` - IP Integration *(Structure continues for each week)*
 
 ## Overview
