@@ -8,9 +8,10 @@
 This repository documents my progress through the 20-week **RISC-V Reference SoC Tapeout Program**, a national initiative focused on hands-on, end-to-end chip design—from RTL to silicon.
 
 ## Structure
-- `Week_0/` - Environment Setup
-- `Week_1/` - RTL Design & Synthesis Fundamentals: From Verilog to GLS
-- `Week_2/` - SoC Fundamentals & Functional Modelling: BabySoC Simulation & Analysis
+- `Week0/` - Environment Setup
+- `week1/` - RTL Design & Synthesis Fundamentals: From Verilog to GLS
+- `week2/` - SoC Fundamentals & Functional Modelling: BabySoC Simulation & Analysis
+- `week3/` - Physical Design Prep: Gate-Level Simulation & Static Timing Analysis
 
 ## Overview
 The program covers the complete VLSI flow using industry-standard tools, culminating in a tapeout for fabrication. This project is part of India's mission to build skilled silicon designers.
