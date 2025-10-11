@@ -98,15 +98,8 @@ Total Negative Slack: 3.21ns
 Number of Failing Endpoints: 12
 ```
 
-### 📊 Timing Graphs
-
-#### Setup Timing Path
-![Setup Timing Path](part3_opensta/graphs/setup_timing_path.png)
-*Caption: Critical setup timing path with negative slack*
-
-#### Clock Distribution
-![Clock Network](part3_opensta/graphs/clock_network.png)
-*Caption: Clock skew and latency analysis*
+### 📊 Timing Report
+<img width="995" height="748" alt="Screenshot from 2025-10-11 12-31-10" src="https://github.com/user-attachments/assets/9f2f83e0-56eb-42cb-a5e2-951da1420b4a" />
 
 ### 🔍 Observations
 
