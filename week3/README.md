@@ -32,7 +32,8 @@ iverilog -o gls_sim babySoC_synth.v tb_babySoC.v
 ### 📸 Screenshots
 
 #### GLS Waveform
-![GLS Waveform](part1_gls/waveforms/gls_waveform.png)
+<img width="998" height="690" alt="gtkwave post_synth_sim" src="https://github.com/user-attachments/assets/96a47967-3157-415a-b69d-8ea04ee5711d" />
+
 *Caption: Post-synthesis GLS waveform showing correct functionality*
 
 ## Part 2 - STA Fundamentals
