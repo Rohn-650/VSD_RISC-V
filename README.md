@@ -13,6 +13,7 @@ This repository documents my progress through the 20-week **RISC-V Reference SoC
 - `week2/` - SoC Fundamentals & Functional Modelling: BabySoC Simulation & Analysis
 - `week3/` - Physical Design Prep: Gate-Level Simulation & Static Timing Analysis
 - `week4/` - CMOS Circuit Design: Device Physics, Characterization & Variation Analysis
+- `week5/` - OpenROAD Flow Setup: Floorplan & Placement
 
 ## Overview
 The program covers the complete VLSI flow using industry-standard tools, culminating in a tapeout for fabrication. This project is part of India's mission to build skilled silicon designers.
